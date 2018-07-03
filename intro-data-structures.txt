@@ -1,0 +1,25 @@
+1.
+  a)
+    let guestsInLine = ['Vivian', 'Ava', 'Josh', 'Patrick', 'Mike'];
+
+  b)
+    guestsInLine.push('Mary');
+
+  c)
+    guestsInLine.indexOf('Josh');
+
+  d)
+    guestsInLine.indexOf('Emily');
+    Should return -1.
+
+  e)
+    guestsInLine.splice(1, 0, 'Melissa');
+
+  f)
+    guestsInLine.splice(4, 1);
+
+2.
+  Keeping track of the books in a library.
+
+3. 
+  The developer can access data within a database by knowing an identifying value of the data. He can add or delete from the database.
