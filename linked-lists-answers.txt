@@ -1,0 +1,56 @@
+1. A pro of linked lists is that they allow a program to store each element in any available memory slot. This allows the lists to easily grow to immense sizes. A con of linked lists is that they require a program to search for its elements one by one.
+
+2. A game where one person needs to find something hidden using clues. One clue leads to another clue and the prize is eventually found.
+
+Programming Questions
+
+1.
+  LinkedList.prototype.push = function(element) {
+    SET node = {
+     value: element,
+     next: null
+    }
+
+    IF the head node does not exist
+     THEN SET head to node
+    ELSE
+     SET current.next to node
+    }
+  }
+
+  'SET current node to head' is not needed.
+
+2.
+  LinkedList.prototype.removeDuplicates = function() {
+    SET currentNode to head
+    WHILE currentNode exists
+      SET checkNode to currentNode.next
+      WHILE checkNode exists
+        IF currentNode.value is equal to checkNode.value
+          SET tempNext equal to checkNode.next
+          REMOVE checkNode
+          SET currentNode.next to tempNext
+          SET checkNode to tempNext
+        END IF
+        SET checkNode to checkNode.next
+      END WHILE
+      SET currentNode to currentNode.next
+    END WHILE
+  }
+
+3.
+  LinkedList.prototype.reverseList = function() {
+    SET nodeValues to empty array
+    SET reversedValues to empty array
+    SET currentNode to head
+    WHILE currentNode exists
+      CALL nodeValues.push currentNode.value
+      SET currentNode to currentNode.next
+    END WHILE
+    SET currentNode to head
+    WHILE currentNode exists
+      CALL nodeValues.pop RETURNING value
+      SET currentNode.value to RETURNED value
+      SET currentNode to currentNode.next
+    END WHILE
+  }
