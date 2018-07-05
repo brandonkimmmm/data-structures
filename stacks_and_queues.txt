@@ -1,0 +1,86 @@
+1. A stack is LIFO while a queue is FIFO.
+
+2. They both handle the order of priorities within software.
+
+3. The UNDO function would follow a LIFO principle because the user would want to undo the very last entry. The REDO operation would also follow the LIFO principle because the user would want to redo the last undo he made.
+
+Programming Questions
+
+1.
+  FUNCTION REVERSE(original)
+  INIT a new stack
+  FOR each character in original
+    CALL stack.push WITH character
+  END FOR
+  INIT reversed to empty string
+  WHILE stack is not empty
+    CALL stack.pop RETURNING character
+    APPEND character to reversed
+  END WHILE
+  RETURN reversed
+  END FUNCTION
+
+  function reverse(original) {
+    let stack = [];
+    for (let i = 0; i < original.length; i++) {
+      stack.push(original.charAt(i));
+    }
+    let reversed = [];
+    while (stack.length !== 0) {
+      reversed.push(stack.pop());
+    }
+    return reversed.join('');
+  }
+
+2.
+  CLASS Stack
+  FUNCTION pop(queue)
+   INIT copy and SET equal to queue
+   INIT newQueue
+   WHILE copy has more than one value
+    CALL copy.pop RETURNING value
+    APPEND value to newQueue
+   END WHILE
+   RETURN newQueue
+  END FUNCTION
+  END CLASS
+
+  class stack {
+    pop(queue) {
+      let copy = queue;
+      let newQueue = [];
+      while (copy.length > 1) {
+        newQueue.push(copy.pop());
+      }
+      return newQueue;
+    }
+  }
+
+3.
+  CLASS QUEUE
+  FUNCTION enqueue(element)
+   APPEND element to the end of the list
+  END FUNCTION
+
+  FUNCTION dequeue
+    SET temp to the first element
+    REMOVE FIRST element of list from list
+    RETURN temp
+  END FUNCTION
+  END CLASS
+
+  class queue {
+    constructor(list){
+      this.list = list;
+    }
+
+    enqueue(element) {
+      this.list.push(element);
+    }
+
+    dequeue() {
+      let temp = this.list[0];
+      this.list.splice(0, 1);
+      return temp;
+    }
+  }
