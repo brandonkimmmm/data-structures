@@ -1,0 +1,72 @@
+1. It is a data structure in which each Node my point to a left child and right child. It allows for up to two child nodes per node.
+
+2. A heuristic is a guess that an algorithm makes to solve a complex problem sooner by sacrificing accuracy.
+
+3. Finding the best way to become a billionaire. You can make an educated guess and say that the best way to become one is to follow the habits of other billionaires.
+
+4. DFS goes down a tree to as far as possible and then backtracks if the item isn't found. BFS searches horizontally along a tree, starting from the root node.
+
+5. An undirected, a-cyclic, unweighted graph has nodes have edges that connect nodes with no start and end. The node edges do not form loops and don't have costs.
+
+6. A binary search tree is a directed, a-cyclic, unweighted graph.
+
+Programming Questions
+
+*** I had to look at outside sources for these algorithms. I had a very hard time figuring out the methods for these problems. I'm also struggling with being able to understand recursion functions.
+
+1.
+  Use DFS to find the value. While going down the tree, if the value exists, return "Exists". If not, keep going down the node and check each value.
+  function findNode(node, value) {
+    if (node.value === value){
+      return "Exists";
+    }
+    while (node) {
+      if (node.left){
+        findNode(node.left, value);
+      }
+      if (node.right){
+        findNode(node.right, value);
+      }
+    }
+  }
+
+2.
+  I would have to find the distance from the root to the first value and the distance from the root to the second value. I would then have to find the lowest common ancestor for both of the values. After finding all three, I would find the distance between the two nodes by this function: Distance(root, n1) + Distance(root, n2) - 2 * (Distance(root to LCA(n1, n2))).
+  function findDistance(node, n1, n2) {
+    let x = pathLength(node, n1) - 1;
+    let y = pathLength(node, n2) - 1;
+    let lcaData = findLCA(node, n1, n2).value
+    let lcaDistance = pathLength(node, lcaData) - 1;
+    return (x + y) - 2 * lcaDistance;
+  }
+  function pathLength(node, n) {
+    if (root !== null) {
+      let x = 0;
+      if ((node.value === n) || (x = pathLength(node.left, n) > 0) || (x = pathLength(node.right, n) > 0)) {
+        return x + 1;
+      }
+      return 0;
+    }
+    return 0;
+  }
+
+  function findLCA(node, n1, n2) {
+    if (node !== null) {
+      if (node.value === n1 || node.value === n2) {
+        return node;
+      }
+      let leftNode = findLCA(node.left, n1, n2);
+      let rightNode = findLCA(node.right, n1, n2);
+
+      if (leftNode !== null && rightNode !== null) {
+        return node;
+      }
+      if (leftNode !== null) {
+        return leftNode;
+      }
+      if (rightNode !== null) {
+        return rightNode;
+      }
+    }
+    return null;
+  }
